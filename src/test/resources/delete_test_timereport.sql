@@ -1,0 +1,1 @@
+DELETE FROM timereport WHERE user_id = 1000 AND created >= CURRENT_DATE() - 1;

@@ -1,0 +1,40 @@
+CREATE SCHEMA IF NOT EXISTS timemanager DEFAULT CHARACTER SET UTF8MB4;
+USE timemanager;
+CREATE TABLE IF NOT EXISTS user
+(
+    id          BIGINT AUTO_INCREMENT UNIQUE        NOT NULL,
+    user_login  VARCHAR(255) UNIQUE                 NOT NULL,
+    first_name  VARCHAR(255)                        NOT NULL,
+    second_name VARCHAR(255)                        NOT NULL,
+    created     TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    PRIMARY KEY (id)
+)
+    AUTO_INCREMENT = 1000;
+
+CREATE TABLE IF NOT EXISTS timereport
+(
+    id         BIGINT AUTO_INCREMENT UNIQUE        NOT NULL,
+    user_id    BIGINT                              NULL,
+    project_id BIGINT                              NULL,
+    hours      BIGINT                              NULL,
+    created    TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user (id),
+    FOREIGN KEY (project_id) REFERENCES project (id)
+)
+    AUTO_INCREMENT = 2000;
+
+CREATE TABLE IF NOT EXISTS project
+(
+    id      BIGINT AUTO_INCREMENT UNIQUE        NOT NULL,
+    name    VARCHAR(255)                        NOT NULL,
+    rate    DECIMAL                             NOT NULL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    PRIMARY KEY (id)
+)
+    AUTO_INCREMENT = 3000;
+
+DROP TABLE user;
+DROP TABLE timereport;
+DROP TABLE project;
+

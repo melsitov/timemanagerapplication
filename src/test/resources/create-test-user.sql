@@ -1,0 +1,1 @@
+INSERT INTO user (user_login, first_name, second_name) VALUES ('TEST_LOGIN', 'TEST_FIRSTNAME', 'TEST_SECONDNAME');

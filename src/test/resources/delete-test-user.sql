@@ -1,0 +1,1 @@
+DELETE FROM user WHERE user_login = 'TEST_LOGIN'
